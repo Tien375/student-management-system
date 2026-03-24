@@ -1,0 +1,335 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   StudentHub — Global Styles
+   Aesthetic: Clean editorial / academic registry
+   Fonts: DM Serif Display (headings) + DM Sans (body)
+   Palette: Deep navy + warm cream + amber accent
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap");
+
+/* ── CSS Variables ───────────────────────────────────────────────────────── */
+:root {
+  --navy:       #0f1e3c;
+  --navy-mid:   #1a3160;
+  --navy-light: #243d75;
+  --cream:      #faf7f2;
+  --cream-dark: #f0ebe0;
+  --amber:      #d4882a;
+  --amber-light:#e9a94a;
+  --red:        #c0392b;
+  --red-light:  #fdecea;
+  --green:      #217a4b;
+  --green-light:#e8f5ee;
+  --text:       #1a1a2e;
+  --text-muted: #5a6070;
+  --border:     #ddd8cc;
+  --shadow:     0 2px 12px rgba(15,30,60,0.10);
+  --shadow-lg:  0 6px 28px rgba(15,30,60,0.14);
+  --radius:     10px;
+  --transition: 180ms ease;
+}
+
+/* ── Reset & Base ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar {
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.35rem;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.navbar-links { display: flex; gap: 0.25rem; }
+
+.nav-link {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition);
+}
+
+.nav-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.nav-link--active { background: var(--amber); color: #fff !important; }
+
+/* ── Main Content ────────────────────────────────────────────────────────── */
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ── Page layout ─────────────────────────────────────────────────────────── */
+.page { animation: fadeIn 0.25s ease; }
+.page--narrow { max-width: 600px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  font-family: "DM Serif Display", serif;
+  font-size: 2rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+.page-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* ── Alerts ──────────────────────────────────────────────────────────────── */
+.alert {
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.alert-success { background: var(--green-light); color: var(--green); border: 1px solid #b2dfc6; }
+.alert-error   { background: var(--red-light);   color: var(--red);   border: 1px solid #f0bbb5; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 7px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.btn-primary:hover { background: var(--navy-mid); box-shadow: var(--shadow-lg); }
+.btn-primary:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+}
+.btn-ghost:hover { background: var(--cream-dark); color: var(--text); }
+
+.btn-edit {
+  background: var(--navy-light);
+  color: #fff;
+  padding: 0.38rem 0.85rem;
+  font-size: 0.82rem;
+}
+.btn-edit:hover { background: var(--navy-mid); }
+
+.btn-delete {
+  background: transparent;
+  color: var(--red);
+  border: 1.5px solid #f0bbb5;
+  padding: 0.38rem 0.85rem;
+  font-size: 0.82rem;
+}
+.btn-delete:hover { background: var(--red-light); }
+
+.btn-submit { width: 100%; justify-content: center; padding: 0.75rem; font-size: 0.95rem; }
+
+.btn-link {
+  background: none; border: none; color: var(--navy); cursor: pointer;
+  font-weight: 600; text-decoration: underline; padding: 0;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.table-wrapper {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.91rem;
+}
+
+.table thead {
+  background: var(--navy);
+  color: #fff;
+}
+
+.table th {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--cream-dark);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table tbody tr {
+  transition: background var(--transition);
+}
+
+.table tbody tr:hover { background: #f7f4ef; }
+
+.mono  { font-family: "Courier New", monospace; font-size: 0.85rem; color: var(--text-muted); }
+.bold  { font-weight: 600; }
+.actions { display: flex; gap: 0.5rem; }
+
+/* ── GPA Badges ──────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.badge-high { background: var(--green-light); color: var(--green); }
+.badge-mid  { background: #fff4e0; color: #a06000; }
+.badge-low  { background: var(--red-light); color: var(--red); }
+
+/* ── Form Fields ─────────────────────────────────────────────────────────── */
+.student-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.field-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--cream);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.field-input:focus {
+  border-color: var(--navy-light);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(36,61,117,0.12);
+}
+
+.field-input:disabled {
+  background: #e9e6e0;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.field-input--error { border-color: var(--red); }
+.field-input--error:focus { box-shadow: 0 0 0 3px rgba(192,57,43,0.12); }
+
+.field-error { font-size: 0.82rem; color: var(--red); }
+
+/* ── States ──────────────────────────────────────────────────────────────── */
+.loading-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem;
+  font-size: 1rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .table th:nth-child(3),
+  .table td:nth-child(3) { display: none; } /* hide Birth Year on mobile */
+
+  .page-title { font-size: 1.5rem; }
+  .card { padding: 1.25rem; }
+}
